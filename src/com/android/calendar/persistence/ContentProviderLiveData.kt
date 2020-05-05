@@ -21,13 +21,10 @@ import android.content.Context
 import android.database.ContentObserver
 import android.net.Uri
 import androidx.lifecycle.MutableLiveData
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
 
 /**
- * Based on https://medium.com/@jmcassis/android-livedata-and-content-provider-updates-5f8fd3b2b3a4
+ * From https://medium.com/@jmcassis/android-livedata-and-content-provider-updates-5f8fd3b2b3a4
+ * Added postValue(getContentProviderValue()) in onActive()
  *
  * Abstract [LiveData] to observe Android's Content Provider changes.
  * Provide a [uri] to observe changes and implement [getContentProviderValue]
@@ -37,31 +34,23 @@ abstract class ContentProviderLiveData<T>(
         private val context: Context,
         private val uri: Uri
 ) : MutableLiveData<T>() {
-
-    private var observer = object : ContentObserver(null) {
-        override fun onChange(self: Boolean) {
-            // Notify LiveData listeners that data at the uri has changed
-            getContentProviderValueAsync()
-        }
-    }
+    private lateinit var observer: ContentObserver
 
     override fun onActive() {
+        observer = object : ContentObserver(null) {
+            override fun onChange(self: Boolean) {
+                // Notify LiveData listeners an event has happened
+                postValue(getContentProviderValue())
+            }
+        }
         context.contentResolver.registerContentObserver(uri, true, observer)
-        getContentProviderValueAsync()
+
+        // post value when this LiveData is observed on first time
+        postValue(getContentProviderValue())
     }
 
     override fun onInactive() {
         context.contentResolver.unregisterContentObserver(observer)
-    }
-
-    private fun getContentProviderValueAsync() {
-        GlobalScope.launch(Dispatchers.Main) {
-            val accounts = async {
-                getContentProviderValue()
-            }
-
-            postValue(accounts.await())
-        }
     }
 
     /**
