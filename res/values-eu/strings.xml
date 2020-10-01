@@ -303,7 +303,6 @@
     <string name="preferences_list_calendar_summary_sync_off">Ez sinkronizatuta</string>
     <string name="preferences_list_calendar_summary_invisible">Gertaerak ez dira bistaratzen</string>
     <string name="preferences_list_general">Ezarpen orokorrak</string>
-    <string name="preferences_list_add_remote">Gehitu urruneko egutegia (CalDAV)</string>
     <string name="preferences_list_add_offline">Gehitu lineaz kanpoko egutegia</string>
     <string name="preferences_list_add_offline_title">Gehitu lineaz kanpoko egutegia</string>
     <string name="preferences_list_add_offline_error_empty">Idatzi egutegiaren izena!</string>
@@ -321,7 +320,7 @@
     <string name="preferences_calendar_delete_cancel">Utzi</string>
     <string name="preferences_menu_about">Etar-i buruz</string>
     <string name="offline_account_name">Lineaz kanpoko egutegia</string>
-    <string name="app_copyright">© 2015-<xliff:g>%s</xliff:g> The Etar Project. Portions © 2005-<xliff:g>%s</xliff:g> The Android Open Source Project.</string>
+    <string name="app_copyright">© 2015-<xliff:g>%1$s</xliff:g> The Etar Project. Portions © 2005-<xliff:g>%1$s</xliff:g> The Android Open Source Project.</string>
     <string name="authors">Egileak</string>
     <string name="changelog">Aldaketa egunkaria</string>
     <string name="license">Lizentzia</string>

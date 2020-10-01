@@ -32,6 +32,7 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application android:name="com.android.calendar.CalendarApplication"
+        android:requestLegacyExternalStorage="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/standalone_app_label"
@@ -173,6 +174,7 @@
                 <data android:scheme="file" />
                 <data android:mimeType="text/x-vcalendar" />
                 <data android:mimeType="text/calendar" />
+                <data android:mimeType="application/ics" />
             </intent-filter>
         </activity>
 
@@ -188,7 +190,7 @@
 
         <provider android:name="com.android.calendar.CalendarRecentSuggestionsProvider"
             android:exported="false"
-            android:authorities="com.android.calendar.CalendarRecentSuggestionsProvider" />
+            android:authorities="ws.xsoh.etar.CalendarRecentSuggestionsProvider" />
 
         <!-- Declarations for alerts/reminders -->
         <activity
@@ -229,6 +231,16 @@
         <receiver android:name="com.android.calendar.alerts.GlobalDismissManager"
                   android:exported="false" />
 
+        <receiver android:name="com.android.calendar.UpgradeReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+
         <service android:name="com.android.calendar.alerts.AlertService" />
 
         <service android:name="com.android.calendar.alerts.DismissAlarmsService" />
@@ -236,7 +248,7 @@
         <service android:name="com.android.calendar.alerts.SnoozeAlarmsService" />
 
         <!-- Declarations for the widget -->
-        <!--receiver android:name="com.android.calendar.widget.CalendarAppWidgetProvider" android:label="@string/gadget_title">
+        <receiver android:name="com.android.calendar.widget.CalendarAppWidgetProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="com.android.calendar.APPWIDGET_UPDATE" />
@@ -267,7 +279,7 @@
         <service android:name="com.android.calendar.widget.CalendarAppWidgetService"
             android:exported="false"
             android:permission="android.permission.BIND_REMOTEVIEWS">
-        </service-->
+        </service>
 
         <service android:name="com.android.calendar.AsyncQueryServiceHelper" />
 

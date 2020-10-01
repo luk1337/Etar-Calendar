@@ -309,7 +309,6 @@
     <string name="preferences_list_calendar_summary_sync_off">Ikke synkronisert</string>
     <string name="preferences_list_calendar_summary_invisible">Aktiviteter vises ikke</string>
     <string name="preferences_list_general">Hovedinnstillinger</string>
-    <string name="preferences_list_add_remote">Legg til kalender annensteds fra (CalDAV)</string>
     <string name="preferences_list_add_offline">Legg til frakoblet kalender</string>
     <string name="preferences_list_add_offline_title">Legg til frakoblet kalender</string>
     <string name="preferences_list_add_offline_error_empty">Skriv inn kalendernavn!</string>
@@ -327,7 +326,7 @@
     <string name="preferences_calendar_delete_cancel">Avbryt</string>
     <string name="preferences_menu_about">Om Etar</string>
     <string name="offline_account_name">Frakoblet kalender</string>
-    <string name="app_copyright">© 2015-<xliff:g>%s</xliff:g> Etar-prosjektet. Portions © 2005-<xliff:g>%s</xliff:g> Android Open Source-prosjektet.</string>
+    <string name="app_copyright">© 2015-<xliff:g>%1$s</xliff:g> Etar-prosjektet. Portions © 2005-<xliff:g>%1$s</xliff:g> Android Open Source-prosjektet.</string>
     <string name="authors">Utviklere</string>
     <string name="changelog">Endringslogg</string>
     <string name="license">Lisens</string>

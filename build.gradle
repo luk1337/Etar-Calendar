@@ -169,8 +169,8 @@ android {
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 23
-        versionName "1.0.21"
+        versionCode 25
+        versionName "1.0.23"
         applicationId "ws.xsoh.etar"
     }
 
